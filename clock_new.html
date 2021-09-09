@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        background: url("972159240.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        width: 100%;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .work{
+        position: absolute;
+        top: 25%;
+        left: 25%;
+      }
+
+      .container #timeshow {
+        font-size: 80px;
+        font-family: cursive;
+        color: #fff;
+        padding: 10px 20px;
+        border: 3px solid rgba(241, 237, 237, 0.616);
+        border-radius: 6px;
+        margin: 20px 40px;
+      }
+
+      #dateshow {
+        font-size: 50px;
+        font-family: cursive;
+        color: #fff;
+        padding: 10px 20px;
+        border: 3px solid rgba(241, 237, 237, 0.616);
+        border-radius: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="work">
+          <div id="timeshow"></div>
+        <div id="dateshow"></div>
+        </div>        
+      </div>
+    </div>
+
+    <script>
+      setInterval(() => {
+        let d = new Date();
+        var hour = d.getHours();
+        var minute = d.getMinutes();
+        var second = d.getSeconds();
+        var a_p = " ";
+
+        if (hour > 12) {
+          a_p = "PM";
+        } else {
+          a_p = "AM";
+        }
+
+        if (hour > 12) {
+          hour = hour - 12;
+        }
+
+        
+
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+
+        let time = hour + ":" + minute + ":" + second + " " + a_p;
+        let date = d.toLocaleDateString(undefined, options);
+
+        document.getElementById("timeshow").innerHTML = time;
+        document.getElementById("dateshow").innerHTML = date;
+      }, 1000);
+    </script>
+  </body>
+</html>
